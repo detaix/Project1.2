@@ -1,0 +1,35 @@
+(* Program 2 *)
+(* squares a matrix *)
+PROGRAM IS
+VAR SIZE:=5; I :=0; J :=0; K :=0;CELL:=0;
+ TYPE INT1D IS ARRAY OF INTEGER;
+ TYPE INT2D IS ARRAY OF INT1D;
+ TYPE INT3D IS ARRAY OF INT2D;
+ VAR B := INT1D [< SIZE OF 0 >];
+ VAR C := INT2D [< SIZE OF INT1D [< SIZE OF 0 >] >];
+ VAR D := INT2D [< SIZE OF INT1D [< SIZE OF 0 >] >];
+BEGIN
+FOR I:=0 TO SIZE-1 DO
+C[I][I]:= I+1;
+END;
+FOR I:=0 TO SIZE-1 DO
+FOR J:=0 TO SIZE-1 DO
+CELL:=0;
+FOR K:=0 TO SIZE-1 DO
+CELL := CELL + C[I][K]*C[K][J];
+END;
+D[I][J] := CELL;
+END;
+END;
+WRITE("Input matrix");
+FOR I:=0 TO SIZE-1 DO
+WRITE(C[I][0]," ",C[I][1]," ",C[I][2]," ",C[I][3],"
+",C[I][4]);
+END;
+WRITE();
+WRITE("Input matrix squared");
+FOR I:=0 TO SIZE-1 DO
+WRITE(D[I][0]," ",D[I][1]," ",D[I][2]," ",D[I][3],"
+",D[I][4]);
+END;
+END;
